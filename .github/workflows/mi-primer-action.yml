@@ -1,0 +1,31 @@
+name: Mi Primer Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+    
+    - name: Mostrar información del sistema
+      run: |
+        echo "=== Información del Sistema ==="
+        uname -a
+        pwd
+        ls -la
+    
+    - name: Crear un archivo de salida
+      run: echo "✅ ¡Action ejecutado correctamente!" > resultado.txt
+    
+    - name: Mostrar contenido
+      run: cat resultado.txt
+    
+    - name: Verificar cambios
+      run: git status
